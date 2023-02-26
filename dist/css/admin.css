@@ -129,6 +129,32 @@ h6 {
   color: #222222;
 }
 
+.table {
+  min-width: 1000px;
+  width: 100%;
+  white-space: nowrap;
+  table-layout: fixed;
+}
+.table,
+.table th,
+.table td {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  padding: 0.25rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+}
+.table tbody tr {
+  cursor: pointer;
+}
+.table tbody tr:hover {
+  background: #d5d8fb;
+}
+
 .products {
   padding: 2rem 0;
   flex: 1;
@@ -266,4 +292,18 @@ h6 {
 }
 .product-create .actions .btn {
   margin-top: 0;
+}
+
+.categories {
+  padding: 2rem 0;
+}
+.categories__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.categories__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

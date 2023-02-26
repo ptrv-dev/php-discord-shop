@@ -104,6 +104,32 @@ h6 {
   font-size: 1rem;
   color: $black;
 }
+.table {
+  min-width: 1000px;
+  width: 100%;
+  white-space: nowrap;
+  table-layout: fixed;
 
+  &,
+  th,
+  td {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    padding: 0.25rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+  }
+  tbody tr {
+    cursor: pointer;
+    &:hover {
+      background: #d5d8fb;
+    }
+  }
+}
 @import "./pages/admin_products";
 @import "./pages/admin_create_product";
+@import "./pages/admin_categories";

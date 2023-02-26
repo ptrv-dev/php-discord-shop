@@ -1,0 +1,13 @@
+.categories {
+  padding: 2rem 0;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

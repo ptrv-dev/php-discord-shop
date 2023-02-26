@@ -1,3 +1,7 @@
+<?php
+session_start();
+if (!$_SESSION['auth']) return header('Location: /admin/login.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +17,7 @@
 </head>
 
 <body>
-    <h1>Панель администратора</h1>
+
 </body>
 
 </html>

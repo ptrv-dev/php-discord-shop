@@ -10,4 +10,25 @@
     align-items: center;
     justify-content: space-between;
   }
+  &__form {
+    max-width: 780px;
+    width: 100%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .input {
+      width: 100%;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .btn {
+      max-width: 12rem;
+      width: 100%;
+    }
+  }
 }

@@ -307,3 +307,24 @@ h6 {
   align-items: center;
   justify-content: space-between;
 }
+.categories__form {
+  max-width: 780px;
+  width: 100%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.categories__form .input {
+  width: 100%;
+}
+.categories__form .row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.categories__form .btn {
+  max-width: 12rem;
+  width: 100%;
+}

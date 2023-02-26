@@ -1,2 +1,39 @@
 @import "../scss/app/vars";
 @import "../scss/app/common";
+
+.header {
+  background: $primary;
+  padding: 1rem 0;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    color: $white;
+    text-decoration: none;
+    font-weight: 700;
+  }
+}
+.nav {
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+  }
+  &__item {
+    padding: 0.5rem 1rem;
+    background: rgba($white, 0.1);
+    border-radius: 0.5rem;
+  }
+  &__link {
+    text-decoration: none;
+    color: $white;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}

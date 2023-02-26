@@ -17,7 +17,7 @@ if (!$_SESSION['auth']) return header('Location: /admin/login.php');
 </head>
 
 <body>
-
+    <?php require_once('../includes/admin/navbar.php') ?>
 </body>
 
 </html>

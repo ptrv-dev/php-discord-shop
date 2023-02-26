@@ -1,0 +1,28 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+}
+
+body {
+  font-size: $font-size;
+  color: $font-color;
+  background: $body-background;
+  .no-scroll {
+    overflow: hidden;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: calc($container-width + 2 * $container-padding);
+  padding: 0 $container-padding;
+}
+
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+}

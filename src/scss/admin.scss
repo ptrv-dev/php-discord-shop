@@ -1,6 +1,12 @@
 @import "../scss/app/vars";
 @import "../scss/app/common";
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   background: $primary;
   padding: 1rem 0;

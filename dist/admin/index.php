@@ -1,9 +1,27 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 session_start();
 if (!$_SESSION['auth']) return header('Location: /admin/login.php');
 
+require_once('../vendor/db.php');
+
 $search = trim(htmlspecialchars($_GET['search']));
-$display = trim(htmlspecialchars($_GET['display']));
+$display = intval(trim(htmlspecialchars($_GET['display'])));
+!$display ? $display = 20 : $display = $display;
+$page = intval(trim(htmlspecialchars($_GET['page'])));
+!$page ? $page = 1 : $page = $page;
+
+$products_count = $pdo->query("SELECT COUNT(*) FROM `products`")->fetch()[0];
+$pages_count = ceil($products_count / $display);
+$offset = ($pages_count - 1) * $display;
+
+$products = $pdo->query("SELECT * FROM `products` WHERE `title` LIKE '%{$search}%' LIMIT $display OFFSET $offset");
+$products = $products->fetchAll(PDO::FETCH_ASSOC);
+
+$categories = $pdo->query("SELECT * FROM `categories`");
+$categories = $categories->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -32,12 +50,54 @@ $display = trim(htmlspecialchars($_GET['display']));
                     <span>
                         <label for="display">Отображать по:</label>
                         <select name="display" id="display" class="select" onchange="this.form.submit()">
-                            <option <?php if ($display === '10') echo 'selected'; ?> value="10">10</option>
-                            <option <?php if ($display === '20') echo 'selected'; ?> value="20">20</option>
-                            <option <?php if ($display === '50') echo 'selected'; ?> value="50">50</option>
+                            <option <?php if ($display === 10) echo 'selected'; ?> value="10">10</option>
+                            <option <?php if ($display === 20) echo 'selected'; ?> value="20">20</option>
+                            <option <?php if ($display === 50) echo 'selected'; ?> value="50">50</option>
                         </select>
                     </span>
                 </form>
+            </div>
+            <div class="products-table-wrapper">
+                <table class="products-table table">
+                    <thead>
+                        <th style="width: 2rem;">ID</th>
+                        <th>Дата создания</th>
+                        <th>Заголовок</th>
+                        <th>Описание</th>
+                        <th>Категория</th>
+                        <th style="width: 6rem;">Кол-во</th>
+                        <th style="width: 6rem;">Мин. пок.</th>
+                        <th style="width: 6rem;">Цена</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($products as $product) {
+                            $id = $product['id'];
+                            $product['category_id'] === 0 ? $product_category = 'Без категории' : $product_category = array_filter($categories, function ($category) use ($product) {
+                                if ($product['category_id'] === $category['id']) return true;
+                            })[0]['title'];
+                            !$product_category ? $product_category = 'Ошибка' : $product_category;
+                        ?>
+                            <tr onclick="window.location.href = '<?= "/admin/edit_product?id=$id" ?>'">
+                                <td title="<?= $product['id'] ?>"><?= $product['id'] ?></td>
+                                <td title="<?= $product['created_at'] ?>"><?= $product['created_at'] ?></td>
+                                <td title="<?= $product['title'] ?>"><?= substr($product['title'], 0, 60) ?>...</td>
+                                <td title="<?= $product['description'] ?>"><?= substr($product['description'], 0, 60) ?>...</td>
+                                <td title="<?= $product_category ?>"><?= $product_category ?></td>
+                                <td title="<?= $product['count'] ?>"><?= $product['count'] ?></td>
+                                <td title="<?= $product['min_buy'] ?>"><?= $product['min_buy'] ?></td>
+                                <td title="<?= $product['price'] ?>"><?= $product['price'] ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <?php for ($i = 1; $i <= $pages_count; $i++) { ?>
+                    <a href="/admin/?<?= http_build_query(['search' => $search, 'display' => $display, 'page' => $i]) ?>" class="pagination__item <?php if ($i === $page) echo 'pagination__item_active' ?>"><?= $i ?></a>
+                <?php } ?>
             </div>
         </div>
     </div>

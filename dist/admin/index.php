@@ -22,12 +22,15 @@ if ($products) {
 }
 
 $categories = $pdo->query("SELECT * FROM `categories`");
+$sorted_categories = [];
 if ($categories) {
     $categories = $categories->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($categories as $category) {
+        $sorted_categories[intval($category['id'])] = $category;
+    }
 } else {
     $categories = [];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,13 +80,9 @@ if ($categories) {
                     <tbody>
                         <?php
                         foreach ($products as $product) {
-                            $id = $product['id'];
-                            $product['category_id'] === 0 ? $product_category = 'Без категории' : $product_category = array_filter($categories, function ($category) use ($product) {
-                                if ($product['category_id'] === $category['id']) return true;
-                            })[0]['title'];
-                            !$product_category ? $product_category = 'Ошибка' : $product_category;
+                            $product_category = $sorted_categories[intval($product['category_id'])] ? $sorted_categories[intval($product['category_id'])]['title'] : 'Ошибка';
                         ?>
-                            <tr onclick="window.location.href = '<?= "/admin/edit_product.php?id=$id" ?>'">
+                            <tr onclick="window.location.href = '<?= "/admin/edit_product.php?id={$product['id']}" ?>'">
                                 <td title="<?= $product['id'] ?>"><?= $product['id'] ?></td>
                                 <td title="<?= $product['created_at'] ?>"><?= $product['created_at'] ?></td>
                                 <td title="<?= $product['title'] ?>"><?= substr($product['title'], 0, 60) ?>...</td>

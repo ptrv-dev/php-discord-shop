@@ -40,7 +40,7 @@ $categories = $categories->fetchAll(PDO::FETCH_ASSOC);
                     <input type="text" class="input" placeholder="Мин. кол-во для покупки" name="min_buy" required>
                 </div>
                 <input type="file" name="file" accept="text/plain" required>
-                <button type="submit" class="btn">Далее</button>
+                <button type="submit" class="btn">Создать</button>
             </form>
         </div>
     </div>

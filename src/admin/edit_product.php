@@ -77,7 +77,7 @@ if (!empty($_POST)) {
                 </div>
                 <div class="actions">
                     <button type="submit" class="btn">Сохранить</button>
-                    <a class="btn btn_danger" href="/admin/delete.php?id=<?= $id ?>">Удалить</a>
+                    <a class="btn btn_danger" href="/admin/delete_product.php?id=<?= $id ?>">Удалить</a>
                 </div>
             </form>
         </div>

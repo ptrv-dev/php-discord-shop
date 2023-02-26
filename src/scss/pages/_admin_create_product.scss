@@ -27,4 +27,13 @@
       max-width: 12rem;
     }
   }
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+    .btn {
+      margin-top: 0;
+    }
+  }
 }

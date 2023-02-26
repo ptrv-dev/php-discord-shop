@@ -22,7 +22,7 @@ if ($products) {
 }
 
 $categories = $pdo->query("SELECT * FROM `categories`");
-if ($products) {
+if ($categories) {
     $categories = $categories->fetchAll(PDO::FETCH_ASSOC);
 } else {
     $categories = [];

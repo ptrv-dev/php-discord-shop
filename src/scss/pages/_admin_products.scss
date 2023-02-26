@@ -1,0 +1,29 @@
+.products {
+  padding: 2rem 0;
+}
+.products-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  &__form {
+    flex: 1;
+    input {
+      flex: 1;
+    }
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    select {
+      padding: 0.25rem;
+      font-size: 1rem;
+      color: $black;
+      border: 1px solid $black;
+      border-radius: 0.5rem;
+    }
+  }
+}

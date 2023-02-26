@@ -1,0 +1,30 @@
+.product-create {
+  padding: 2rem 0;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  &__form {
+    max-width: 780px;
+    width: 100%;
+    .input {
+      width: 100%;
+      resize: none;
+    }
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn {
+      margin-top: 1.5rem;
+      align-self: center;
+      width: 100%;
+      max-width: 12rem;
+    }
+  }
+}

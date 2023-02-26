@@ -1,7 +1,4 @@
 <?php
-
-use function PHPSTORM_META\type;
-
 session_start();
 if (!$_SESSION['auth']) return header('Location: /admin/login.php');
 
@@ -17,11 +14,19 @@ $products_count = $pdo->query("SELECT COUNT(*) FROM `products`")->fetch()[0];
 $pages_count = ceil($products_count / $display);
 $offset = ($pages_count - 1) * $display;
 
-$products = $pdo->query("SELECT * FROM `products` WHERE `title` LIKE '%{$search}%' LIMIT $display OFFSET $offset");
-$products = $products->fetchAll(PDO::FETCH_ASSOC);
+$products = $pdo->query("SELECT * FROM `products` WHERE `title` LIKE '%{$search}%' ORDER BY `id` DESC LIMIT $display OFFSET $offset");
+if ($products) {
+    $products = $products->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $products = [];
+}
 
 $categories = $pdo->query("SELECT * FROM `categories`");
-$categories = $categories->fetchAll(PDO::FETCH_ASSOC);
+if ($products) {
+    $categories = $categories->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $categories = [];
+}
 
 ?>
 <!DOCTYPE html>
@@ -44,7 +49,7 @@ $categories = $categories->fetchAll(PDO::FETCH_ASSOC);
         <div class="container products__container">
             <div class="products-header">
                 <h2>Товары</h2>
-                <a class="btn" href="/admin/create_product.php">Создать новый товар</a>
+                <a class="btn" href="/admin/create_product">Создать новый товар</a>
                 <form method="get" class="products-header__form">
                     <input class="input" type="text" placeholder="Поиск..." name="search" id="search" value="<?= $search ?>">
                     <span>
@@ -78,7 +83,7 @@ $categories = $categories->fetchAll(PDO::FETCH_ASSOC);
                             })[0]['title'];
                             !$product_category ? $product_category = 'Ошибка' : $product_category;
                         ?>
-                            <tr onclick="window.location.href = '<?= "/admin/edit_product?id=$id" ?>'">
+                            <tr onclick="window.location.href = '<?= "/admin/edit_product.php?id=$id" ?>'">
                                 <td title="<?= $product['id'] ?>"><?= $product['id'] ?></td>
                                 <td title="<?= $product['created_at'] ?>"><?= $product['created_at'] ?></td>
                                 <td title="<?= $product['title'] ?>"><?= substr($product['title'], 0, 60) ?>...</td>

@@ -36,6 +36,7 @@
     }
     @media screen and (max-width: 768px) {
       position: fixed;
+      z-index: 999;
       right: 1rem;
       top: calc(65px + 1rem);
       background: $primary;

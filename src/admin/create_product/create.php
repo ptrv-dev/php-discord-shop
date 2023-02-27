@@ -23,4 +23,6 @@ foreach ($file as $row) {
 
 $pdo->query("UPDATE `products` SET `count`='$file_rows' WHERE `id` = '$id'");
 
+$pdo->query("UPDATE `categories` SET `count`=count + 1 WHERE `id` = '$category'");
+
 header('Location: /admin');

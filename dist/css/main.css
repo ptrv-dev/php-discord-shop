@@ -95,6 +95,7 @@ h6 {
   text-decoration: none;
   color: #ffffff;
   display: block;
+  text-transform: capitalize;
 }
 @media screen and (max-width: 768px) {
   .header__nav {
@@ -172,6 +173,11 @@ h6 {
     gap: 4rem;
   }
 }
+@media screen and (max-width: 1023.98px) {
+  .hero__col {
+    gap: 1rem;
+  }
+}
 .hero__illustration {
   max-width: 450px;
   width: 100%;
@@ -191,6 +197,11 @@ h6 {
 @media screen and (max-width: 767.98px) {
   .hero__row {
     flex-direction: column;
+  }
+}
+@media screen and (max-width: 1023.98px) {
+  .hero__row {
+    gap: 1rem;
   }
 }
 

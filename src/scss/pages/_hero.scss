@@ -20,6 +20,9 @@
       right: 0;
       gap: 4rem;
     }
+    @media screen and (max-width: 1023.98px) {
+      gap: 1rem;
+    }
   }
   &__illustration {
     max-width: 450px;
@@ -36,6 +39,9 @@
     gap: 2rem;
     @media screen and (max-width: 767.98px) {
       flex-direction: column;
+    }
+    @media screen and (max-width: 1023.98px) {
+      gap: 1rem;
     }
   }
 }

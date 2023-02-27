@@ -341,7 +341,7 @@ if ($categories) {
 						<ul class="products__list">
 							<?php foreach ($products as $product) { ?>
 								<li class="products__item">
-									<a href="/product?id=<?= $product['id'] ?>" title="<?= $product['description'] ?>" class="products__title"><?= $product['title'] ?></a>
+									<a href="/product.php?id=<?= $product['id'] ?>" title="<?= $product['description'] ?>" class="products__title"><?= $product['title'] ?></a>
 									<div class="products__col">
 										<p class="products__count"><strong><?= $product['count'] ?></strong> pcs</p>
 										<p class="products__price"><strong><?= $product['price'] ?></strong> $</p>

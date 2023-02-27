@@ -276,6 +276,25 @@
 				</div>
 			</div>
 		</section>
+		<section class="support">
+			<div class="container support__container">
+				<div class="support__body">
+					<div class="support__col">
+						<svg class="support__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M32 5.33331C17.296 5.33331 5.33334 17.2986 5.33334 32C5.33334 46.7066 17.296 58.6667 32 58.6667C46.704 58.6667 58.6667 46.7066 58.6667 32C58.6667 17.2986 46.704 5.33331 32 5.33331ZM32 48.6667C30.16 48.6667 28.6667 47.176 28.6667 45.3333C28.6667 43.4933 30.16 42 32 42C33.84 42 35.3333 43.4933 35.3333 45.3333C35.3333 47.176 33.84 48.6667 32 48.6667ZM34.6667 37V40H29.3333V32H32C34.944 32 37.3333 29.608 37.3333 26.6666C37.3333 23.7226 34.944 21.3333 32 21.3333C29.056 21.3333 26.6667 23.7226 26.6667 26.6666H21.3333C21.3333 20.7866 26.12 16 32 16C37.88 16 42.6667 20.7866 42.6667 26.6666C42.6667 31.6293 39.2613 35.8106 34.6667 37Z" fill="white" />
+						</svg>
+						<div class="support__text">
+							<h4 class="support__title">Do you need help?</h4>
+							<p class="support__description">Contact us and we will be sure to help you</p>
+						</div>
+					</div>
+					<a href="/contacts.php" class="support__btn">Contacts <svg width="24" height="24" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M17.25 8.75L21 12.5M21 12.5L17.25 16.25M21 12.5H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</a>
+				</div>
+			</div>
+		</section>
 	</div>
 	<script src="./js/app.min.js"></script>
 </body>

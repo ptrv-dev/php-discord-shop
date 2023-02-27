@@ -239,3 +239,59 @@ h6 {
     flex-direction: row;
   }
 }
+.support__container {
+  display: flex;
+  justify-content: center;
+}
+.support__body {
+  max-width: 780px;
+  width: 100%;
+  background: #5865f2;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 600px) {
+  .support__body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.support__col {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+.support__icon {
+  flex-shrink: 0;
+}
+.support__text {
+  color: #ffffff;
+}
+.support__title {
+  font-weight: 600;
+}
+.support__description {
+  color: rgba(255, 255, 255, 0.5);
+}
+.support__btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  justify-content: center;
+  transition: background 0.2s ease-in-out;
+}
+.support__btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

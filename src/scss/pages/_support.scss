@@ -1,0 +1,57 @@
+.support {
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+  &__body {
+    max-width: 780px;
+    width: 100%;
+    background: $primary;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  &__col {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+  }
+  &__icon {
+    flex-shrink: 0;
+  }
+  &__text {
+    color: $white;
+  }
+  &__title {
+    font-weight: 600;
+  }
+  &__description {
+    color: rgba($white, 0.5);
+  }
+  &__btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: $white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba($white, 0.1);
+    text-decoration: none;
+    justify-content: center;
+
+    transition: background 0.2s ease-in-out;
+    &:hover {
+      background: rgba($white, 0.2);
+    }
+  }
+}

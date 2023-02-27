@@ -345,6 +345,7 @@
 				</div>
 			</div>
 		</section>
+		<?php require_once('./includes/footer.php') ?>
 	</div>
 	<script src="./js/app.min.js"></script>
 </body>

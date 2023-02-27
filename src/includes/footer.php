@@ -1,10 +1,15 @@
 <footer class="footer">
     <div class="container footer__container">
         <div class="footer__row">
-            <a href="/" class="footer__logo">
-                <img src="../img/logo.svg" alt="Logo">
-                <h4>Discord Shop</h4>
-            </a>
+            <div class="footer__col">
+                <a href="/" class="footer__logo">
+                    <img src="../img/logo.svg" alt="Logo">
+                    <h4>Discord Shop</h4>
+                </a>
+                <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn.freekassa.ru/banners/big-white-1.png" title="Прием платежей">
+                </a>
+            </div>
             <nav class="footer__nav">
                 <ul>
                     <li>

@@ -1,0 +1,82 @@
+.header {
+  padding: 1rem 0;
+  background: $primary;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: $white;
+  }
+  &__nav {
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    li {
+      border-radius: 0.5rem;
+      background: rgba($white, 0.1);
+
+      transition: background 0.2s ease-in-out;
+      &:hover {
+        background: rgba($white, 0.2);
+      }
+    }
+    a {
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: $white;
+      display: block;
+    }
+    @media screen and (max-width: 768px) {
+      position: fixed;
+      right: 1rem;
+      top: calc(65px + 1rem);
+      background: $primary;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      li {
+        width: 100%;
+      }
+      transform: translateX(110%);
+      opacity: 0;
+      transition: transform 0.2s ease-in-out, opacity 0.25s ease-in-out;
+      &_active {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+  &__menu {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    &__menu {
+      width: 2rem;
+      height: 2rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      background: rgba($white, 0.1);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      justify-content: space-between;
+      span {
+        width: 100%;
+        height: 2px;
+        background: $white;
+      }
+    }
+  }
+}

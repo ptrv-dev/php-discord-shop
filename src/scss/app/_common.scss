@@ -20,6 +20,12 @@ body {
   margin: 0 auto;
   max-width: calc($container-width + 2 * $container-padding);
   padding: 0 $container-padding;
+  @media screen and (max-width: calc(100px + $container-width + 2 * $container-padding)) {
+    max-width: 1024px;
+  }
+  @media screen and (max-width: 1124px) {
+    max-width: 768px;
+  }
 }
 
 .wrapper {

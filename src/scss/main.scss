@@ -1,8 +1,27 @@
-@import 'app/mixins.scss';
-@import 'app/vars.scss';
-@import 'app/fonts.scss';
+@import "app/mixins.scss";
+@import "app/vars.scss";
+@import "app/fonts.scss";
 
-@import 'app/common.scss';
+@import "app/common.scss";
 
-@import 'pages/header.scss';
-@import 'pages/footer.scss';
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+h6 {
+  font-size: 1rem;
+}
+
+@import "pages/header.scss";
+@import "pages/footer.scss";

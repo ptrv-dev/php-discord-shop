@@ -13,9 +13,10 @@
 </head>
 
 <body>
-	<h1>Hello world!</h1>
-	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non unde quaerat saepe, ipsam recusandae possimus!</p>
-	<p><?= 'Hello from PHP!' ?></p>
+	<div class="wrapper">
+		<?php require_once('./includes/navbar.php') ?>
+	</div>
+	<script src="./js/app.min.js"></script>
 </body>
 
 </html>

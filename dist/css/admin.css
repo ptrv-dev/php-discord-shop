@@ -21,6 +21,16 @@ body .no-scroll {
   max-width: 1220px;
   padding: 0 10px;
 }
+@media screen and (max-width: 1320px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+@media screen and (max-width: 1124px) {
+  .container {
+    max-width: 768px;
+  }
+}
 
 .wrapper {
   min-height: 100vh;

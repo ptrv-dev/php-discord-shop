@@ -56,6 +56,22 @@ body .no-scroll {
   box-shadow: 0 4px 30px rgba(88, 101, 242, 0.2);
 }
 
+.circle-decor {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #828cf5;
+  position: absolute;
+}
+.circle-decor_light {
+  background: #d5d8fb;
+}
+@media screen and (max-width: 1124px) {
+  .circle-decor {
+    display: none;
+  }
+}
+
 body {
   min-height: 100vh;
   display: flex;

@@ -1,0 +1,38 @@
+.user-agreement {
+  padding: 4rem 0;
+  position: relative;
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  &__container {
+    max-width: 780px;
+  }
+  .circle-decor {
+    z-index: -1;
+    &:nth-child(1) {
+      width: 160px;
+      height: 160px;
+      top: 50px;
+      right: 50px;
+    }
+    &:nth-child(2) {
+      bottom: 200px;
+      left: 180px;
+      width: 128px;
+      height: 128px;
+    }
+    &:nth-child(3) {
+      top: 300px;
+      left: 66px;
+      width: 128px;
+      height: 128px;
+    }
+    &:nth-child(4) {
+      bottom: 20px;
+      right: 20px;
+      width: 200px;
+      height: 200px;
+    }
+  }
+}

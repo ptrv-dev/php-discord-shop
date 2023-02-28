@@ -56,6 +56,22 @@ body .no-scroll {
   box-shadow: 0 4px 30px rgba(88, 101, 242, 0.2);
 }
 
+.circle-decor {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #828cf5;
+  position: absolute;
+}
+.circle-decor_light {
+  background: #d5d8fb;
+}
+@media screen and (max-width: 1124px) {
+  .circle-decor {
+    display: none;
+  }
+}
+
 h1 {
   font-size: 2.5rem;
 }
@@ -606,6 +622,45 @@ h6 {
 }
 .order-form .btn {
   margin-top: 2rem;
+}
+
+.user-agreement {
+  padding: 4rem 0;
+  position: relative;
+}
+.user-agreement h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.user-agreement__container {
+  max-width: 780px;
+}
+.user-agreement .circle-decor {
+  z-index: -1;
+}
+.user-agreement .circle-decor:nth-child(1) {
+  width: 160px;
+  height: 160px;
+  top: 50px;
+  right: 50px;
+}
+.user-agreement .circle-decor:nth-child(2) {
+  bottom: 200px;
+  left: 180px;
+  width: 128px;
+  height: 128px;
+}
+.user-agreement .circle-decor:nth-child(3) {
+  top: 300px;
+  left: 66px;
+  width: 128px;
+  height: 128px;
+}
+.user-agreement .circle-decor:nth-child(4) {
+  bottom: 20px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
 }
 
 .footer {

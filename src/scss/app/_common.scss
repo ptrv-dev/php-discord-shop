@@ -52,3 +52,17 @@ body {
     box-shadow: 0 4px 30px rgba($primary, 0.2);
   }
 }
+
+.circle-decor {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: $primary-light;
+  position: absolute;
+  &_light {
+    background: #d5d8fb;
+  }
+  @media screen and (max-width: 1124px) {
+    display: none;
+  }
+}

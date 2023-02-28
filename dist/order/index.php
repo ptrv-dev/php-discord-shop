@@ -1,11 +1,13 @@
 <?php
-require_once('./vendor/db.php');
+session_start();
+require_once('../vendor/db.php');
 
 $id = trim(htmlspecialchars($_GET['id']));
 
 $product = $pdo->query("SELECT * FROM `products` WHERE `id`='$id'")->fetch(PDO::FETCH_ASSOC);
+$product_count = $pdo->query("SELECT COUNT(`id`) FROM `products_data` WHERE `product_id` = '{$product['id']}'")->fetch(PDO::FETCH_NUM)[0];
 
-if (intval($product['count']) < intval($product['min_buy'])) $product['min_buy'] = $product['count'];
+if (intval($product_count) < intval($product['min_buy'])) $product['min_buy'] = $product_count;
 
 if (!$product) {
     header('HTTP/1.0 404 Not Found');
@@ -49,6 +51,11 @@ if (!empty($_POST)) {
     echo "<pre>";
     print_r($response);
     echo "</pre>";
+    // die();
+
+    $pdo->query("INSERT INTO `orders` (`unique_id`, `email`, `product_id`, `quantity`, `total_price`) VALUES ('{$response['data']['uniqid']}','$email','{$product['id']}','$quantity','{$response['log']['taxes']['total']}')");
+
+    $_SESSION['unique_id'] = $response['data']['uniqid'];
 
     header("Location: {$response['data']['url']}");
 }
@@ -64,12 +71,12 @@ if (!empty($_POST)) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/main.min.css">
+    <link rel="stylesheet" href="../css/main.min.css">
 </head>
 
 <body>
     <div class="wrapper">
-        <?php require_once('./includes/navbar.php') ?>
+        <?php require_once('../includes/navbar.php') ?>
         <div class="order container order__container">
             <div class="order-warning">
                 <svg class="order-warning__icon" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +97,7 @@ if (!empty($_POST)) {
                     </div>
                     <div class="order-form__item">
                         In stock
-                        <strong data-inStock><?= $product['count'] ?></strong>
+                        <strong data-inStock><?= $product_count ?></strong>
                     </div>
                     <div class="order-form__item">
                         Price per piece
@@ -107,7 +114,7 @@ if (!empty($_POST)) {
                 </div>
                 <label for="quantity" class="order-form__label">Quantity <i>*</i></label>
                 <div class="order-form__input order-form__input_p">
-                    <input type="number" min="<?= $product['min_buy'] ?>" max="<?= $product['count'] ?>" required value="<?= $product['min_buy'] ?>" name="quantity" id="quantity">
+                    <input type="number" min="<?= $product['min_buy'] ?>" max="<?= $product_count ?>" required value="<?= $product['min_buy'] ?>" name="quantity" id="quantity">
                 </div>
                 <div class="order-form__total">
                     Total price <strong>$0.0</strong>
@@ -115,10 +122,10 @@ if (!empty($_POST)) {
                 <button type="submit" class="btn">Proceed to pay</button>
             </form>
         </div>
-        <?php require_once('./includes/footer.php') ?>
+        <?php require_once('../includes/footer.php') ?>
     </div>
-    <script src="./js/order.min.js"></script>
-    <script src="./js/app.min.js"></script>
+    <script src="../js/order.min.js"></script>
+    <script src="../js/app.min.js"></script>
 </body>
 
 </html>

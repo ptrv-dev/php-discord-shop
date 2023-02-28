@@ -13,7 +13,44 @@ if (!$product) {
 }
 
 if (!empty($_POST)) {
-    $value = trim(htmlspecialchars($_POST['value']));
+    $api_key = 'pMu9opKQiSHAhjsmQLRCMNziw4LLpi5pw4wJbE6O1hEoEAd1HNi7zIPpDwwRerYt';
+    $return_url = 'http://localhost:3000/order/complete.php';
+
+    $email = trim(htmlspecialchars($_POST['email']));
+    $quantity = trim(htmlspecialchars($_POST['quantity']));
+
+    $curl = curl_init('https://dev.sellix.io/v1/payments');
+
+    $headers = ['Content-type: application/json', 'Authorization: Bearer ' . $api_key];
+
+    $payload = [
+        'title' => $product['title'],
+        'email' => $email,
+        'currency' => 'USD',
+        'quantity' => $quantity,
+        'value' => $product['price'],
+        'return_url' => $return_url,
+    ];
+
+    $curl_array = [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_HTTPHEADER => $headers,
+        CURLOPT_POSTFIELDS => json_encode($payload)
+    ];
+
+    curl_setopt_array($curl, $curl_array);
+
+    $response = curl_exec($curl);
+    curl_close($curl);
+
+    $response = json_decode($response, true);
+
+    echo "<pre>";
+    print_r($response);
+    echo "</pre>";
+
+    header("Location: {$response['data']['url']}");
 }
 ?>
 <!DOCTYPE html>
@@ -68,9 +105,9 @@ if (!empty($_POST)) {
                     </svg>
                     <input type="email" required placeholder="example@email.com" name="email" id="email">
                 </div>
-                <label for="value" class="order-form__label">Quantity <i>*</i></label>
+                <label for="quantity" class="order-form__label">Quantity <i>*</i></label>
                 <div class="order-form__input order-form__input_p">
-                    <input type="number" min="<?= $product['min_buy'] ?>" max="<?= $product['count'] ?>" required value="<?= $product['min_buy'] ?>" name="value" id="value">
+                    <input type="number" min="<?= $product['min_buy'] ?>" max="<?= $product['count'] ?>" required value="<?= $product['min_buy'] ?>" name="quantity" id="quantity">
                 </div>
                 <div class="order-form__total">
                     Total price <strong>$0.0</strong>

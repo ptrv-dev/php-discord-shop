@@ -81,6 +81,8 @@ if ($categories) {
                         <?php
                         foreach ($products as $product) {
                             $product_category = $sorted_categories[intval($product['category_id'])] ? $sorted_categories[intval($product['category_id'])]['title'] : 'Ошибка';
+                            $product_count = $pdo->query("SELECT COUNT(`id`) FROM `products_data` WHERE `product_id` = '{$product['id']}'")->fetch(PDO::FETCH_NUM)[0];
+
                         ?>
                             <tr onclick="window.location.href = '<?= "/admin/edit_product.php?id={$product['id']}" ?>'">
                                 <td title="<?= $product['id'] ?>"><?= $product['id'] ?></td>
@@ -88,7 +90,7 @@ if ($categories) {
                                 <td title="<?= $product['title'] ?>"><?= substr($product['title'], 0, 60) ?>...</td>
                                 <td title="<?= $product['description'] ?>"><?= substr($product['description'], 0, 60) ?>...</td>
                                 <td title="<?= $product_category ?>"><?= $product_category ?></td>
-                                <td title="<?= $product['count'] ?>"><?= $product['count'] ?></td>
+                                <td title="<?= $product_count ?>"><?= $product_count ?></td>
                                 <td title="<?= $product['min_buy'] ?>"><?= $product['min_buy'] ?></td>
                                 <td title="<?= $product['price'] ?>"><?= $product['price'] ?></td>
                             </tr>

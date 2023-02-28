@@ -12,7 +12,7 @@ $page = intval(trim(htmlspecialchars($_GET['page'])));
 
 $products_count = $pdo->query("SELECT COUNT(*) FROM `products`")->fetch()[0];
 $pages_count = ceil($products_count / $display);
-$offset = ($pages_count - 1) * $display;
+$offset = $pages_count ? ($pages_count - 1) * $display : 0;
 
 $products = $pdo->query("SELECT * FROM `products` WHERE `title` LIKE '%{$search}%' ORDER BY `id` DESC LIMIT $display OFFSET $offset");
 if ($products) {

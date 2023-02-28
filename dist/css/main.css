@@ -714,6 +714,13 @@ h6 {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+@media screen and (max-width: 1024px) {
+  .contacts__row {
+    justify-content: space-evenly;
+  }
 }
 
 .contact-item {

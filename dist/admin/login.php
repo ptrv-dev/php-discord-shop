@@ -1,6 +1,6 @@
 <?php
 $ADMIN_LOGIN = 'root';
-$ADMIN_PASS = 'qwerty';
+$ADMIN_PASS = 'rNDjte2#6V9E';
 
 $message = '';
 

@@ -31,4 +31,6 @@ const dev = gulp.series(reset, font, mainTasks, gulp.parallel(watcher, server));
 
 gulp.task("deploy", ghPages);
 
+gulp.task("build", gulp.series(reset, font, html, style, script, image));
+
 gulp.task("default", dev);

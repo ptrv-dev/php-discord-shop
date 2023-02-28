@@ -1,0 +1,100 @@
+.faq {
+  padding: 4rem 0;
+  flex: 1;
+  position: relative;
+  .circle-decor {
+    z-index: -1;
+    &:nth-child(1) {
+      width: 160px;
+      height: 160px;
+      top: 50px;
+      right: 50px;
+    }
+    &:nth-child(2) {
+      top: 100px;
+      left: 180px;
+      width: 128px;
+      height: 128px;
+    }
+    &:nth-child(3) {
+      bottom: 100px;
+      left: 66px;
+      width: 128px;
+      height: 128px;
+    }
+    &:nth-child(4) {
+      bottom: 20px;
+      right: 20px;
+      width: 200px;
+      height: 200px;
+    }
+  }
+  &__container {
+    max-width: 780px;
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+.faq-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  transition: box-shadow 0.2s ease-in-out 0.2s;
+
+  &__header {
+    cursor: pointer;
+    background: $primary;
+    color: $white;
+    padding: 1rem 3rem 1rem 2rem;
+    position: relative;
+    &::after {
+      content: "\002B";
+      color: $white;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-left: 5px;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  &__body {
+    transition: max-height 0.5s ease-in-out;
+    max-height: 0px;
+    overflow: hidden;
+
+    background: $white;
+    p {
+      padding: 1rem 2rem;
+    }
+  }
+  &._accordion_active {
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.08);
+    .faq-item__body {
+      max-height: 1000px;
+    }
+    .faq-item__header {
+      &::after {
+        content: "\2212";
+        color: $white;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-left: 5px;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

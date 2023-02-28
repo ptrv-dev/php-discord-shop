@@ -1,0 +1,36 @@
+.payment-success {
+  padding: 4rem 0;
+  flex: 1;
+  &__container {
+    max-width: 580px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  &__alert {
+    background: $white;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    h3 {
+      font-weight: 600;
+      text-transform: capitalize;
+      text-align: center;
+    }
+    p {
+      color: #888;
+      line-height: 140%;
+      text-align: center;
+      width: 100%;
+    }
+  }
+  &__illustration {
+    max-width: 376px;
+    width: 100%;
+  }
+}

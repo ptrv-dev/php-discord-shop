@@ -355,7 +355,6 @@ if ($categories) {
 									</div>
 								</li>
 							<?php } ?>
-
 						</ul>
 					</div>
 				</div>

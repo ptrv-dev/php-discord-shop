@@ -48,16 +48,11 @@ if (!empty($_POST)) {
 
     $response = json_decode($response, true);
 
-    echo "<pre>";
-    print_r($response);
-    echo "</pre>";
-    // die();
-
     $pdo->query("INSERT INTO `orders` (`unique_id`, `email`, `product_id`, `quantity`, `total_price`) VALUES ('{$response['data']['uniqid']}','$email','{$product['id']}','$quantity','{$response['log']['taxes']['total']}')");
 
     $_SESSION['unique_id'] = $response['data']['uniqid'];
 
-    header("Location: {$response['data']['url']}");
+    return header("Location: {$response['data']['url']}");
 }
 ?>
 <!DOCTYPE html>

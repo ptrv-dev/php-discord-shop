@@ -8,18 +8,6 @@ $navigation_items = [
         "text" => "Категории",
         "url" => "/admin/categories.php",
     ],
-    [
-        "text" => "Заказы",
-        "url" => "/admin/orders.php",
-    ],
-    [
-        "text" => "FAQ",
-        "url" => "/admin/faq.php",
-    ],
-    [
-        "text" => "Настройки",
-        "url" => "/admin/settings.php",
-    ],
 ];
 ?>
 <div class="header">

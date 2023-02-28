@@ -6,9 +6,6 @@
                     <img src="../img/logo.svg" alt="Logo">
                     <h4>Discord Shop</h4>
                 </a>
-                <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
-                    <img src="https://cdn.freekassa.ru/banners/big-white-1.png" title="Прием платежей">
-                </a>
             </div>
             <nav class="footer__nav">
                 <ul>

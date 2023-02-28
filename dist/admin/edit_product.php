@@ -25,18 +25,12 @@ if (!empty($_POST)) {
 
     if (!empty($_FILES['file']['name'])) {
         $file = file($_FILES['file']['tmp_name']);
-        $file_rows = 0;
-
         foreach ($file as $row) {
             $file_rows++;
             $pdo->query("INSERT INTO `products_data` (`product_id`, `data`) VALUES ('$id','$row')");
         }
-
-        $new_count = $product['count'] + $file_rows;
-
-        $pdo->query("UPDATE `products` SET `count`='$new_count' WHERE `id` = '$id'");
     }
-    header('Location: /admin');
+    return header('Location: /admin');
 }
 ?>
 <!DOCTYPE html>

@@ -12,12 +12,24 @@ $min_buy = trim(htmlspecialchars($_POST['min_buy']));
 $file = file($_FILES['file']['tmp_name']);
 
 
-$pdo->query("INSERT INTO `products` (`title`, `description`, `category_id`, `min_buy`, `price`) VALUES ('$title','$description','$category','$min_buy','$price')");
+$query = $pdo->prepare("INSERT INTO `products` (`title`, `description`, `category_id`, `min_buy`, `price`) VALUES (:title,:description,:category,:min_buy,:price)");
+$query->execute([
+    "title" => $title,
+    "description" => $description,
+    "category" => $category,
+    "min_buy" => $min_buy,
+    "price" => $price,
+]);
 $id = $pdo->lastInsertId();
-$pdo->query("UPDATE `categories` SET `count`=count + 1 WHERE `id` = '$category'");
+$query = $pdo->prepare("UPDATE `categories` SET `count`=count + 1 WHERE `id` = :category");
+$query->execute(["category" => $category]);
 
 foreach ($file as $row) {
-    $pdo->query("INSERT INTO `products_data` (`product_id`, `data`) VALUES ('$id', '$row')");
+    $query = $pdo->prepare("INSERT INTO `products_data` (`product_id`, `data`) VALUES (:id, :row)");
+    $query->execute([
+        "id" => $id,
+        "row" => $row,
+    ]);
 }
 
 header('Location: /admin');

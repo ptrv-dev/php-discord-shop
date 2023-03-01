@@ -87,8 +87,8 @@ if ($categories) {
                             <tr onclick="window.location.href = '<?= "/admin/edit_product.php?id={$product['id']}" ?>'">
                                 <td title="<?= $product['id'] ?>"><?= $product['id'] ?></td>
                                 <td title="<?= $product['created_at'] ?>"><?= $product['created_at'] ?></td>
-                                <td title="<?= $product['title'] ?>"><?= substr($product['title'], 0, 60) ?>...</td>
-                                <td title="<?= $product['description'] ?>"><?= substr($product['description'], 0, 60) ?>...</td>
+                                <td title="<?= $product['title'] ?>"><?= $product['title'] ?></td>
+                                <td title="<?= $product['description'] ?>"><?= $product['description'] ?></td>
                                 <td title="<?= $product_category ?>"><?= $product_category ?></td>
                                 <td title="<?= $product_count ?>"><?= $product_count ?></td>
                                 <td title="<?= $product['min_buy'] ?>"><?= $product['min_buy'] ?></td>

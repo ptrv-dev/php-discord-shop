@@ -26,8 +26,11 @@ if (!empty($_POST)) {
     if (!empty($_FILES['file']['name'])) {
         $file = file($_FILES['file']['tmp_name']);
         foreach ($file as $row) {
-            $file_rows++;
-            $pdo->query("INSERT INTO `products_data` (`product_id`, `data`) VALUES ('$id','$row')");
+            $query = $pdo->prepare("INSERT INTO `products_data` (`product_id`, `data`) VALUES (:id,:row)");
+            $query->execute([
+                "id" => $id,
+                "row" => $row,
+            ]);
         }
     }
     return header('Location: /admin');

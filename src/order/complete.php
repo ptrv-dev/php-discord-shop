@@ -11,8 +11,14 @@ $order = $pdo->query("SELECT * FROM `orders` WHERE `unique_id` = '$unique_id'")-
 if (intval($order['status']) === 0) {
     $order_data = $pdo->query("SELECT * FROM `products_data` WHERE `product_id` = '{$order['product_id']}' LIMIT {$order['quantity']}")->fetchAll(PDO::FETCH_ASSOC);
     foreach ($order_data as $order_row) {
-        $pdo->query("INSERT INTO `orders_data` (`order_id`,`data`) VALUES ('{$order['id']}','{$order_row['data']}')");
-        $pdo->query("DELETE FROM `products_data` WHERE `id` = '{$order_row['id']}'");
+        $query = $pdo->prepare("INSERT INTO `orders_data` (`order_id`,`data`) VALUES (:order_id,:data)");
+        $query->execute([
+            "order_id" => $order['id'],
+            "data" => $order_row['data'],
+        ]);
+
+        $query = $pdo->prepare("DELETE FROM `products_data` WHERE `id` = :id");
+        $query->execute(["id" => $order_row['id']]);
     }
     $pdo->query("UPDATE `orders` SET `status`='1' WHERE `id` = '{$order['id']}'");
 } else {

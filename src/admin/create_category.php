@@ -7,7 +7,8 @@ require_once('../vendor/db.php');
 if (!empty($_POST)) {
     $title = trim(htmlspecialchars($_POST['title']));
 
-    $pdo->query("INSERT INTO `categories` (`title`) VALUES ('$title')");
+    $query = $pdo->prepare("INSERT INTO `categories` (`title`) VALUES (:title)");
+    $query->execute(["title" => $title]);
 
     header('Location: /admin/categories.php');
 }

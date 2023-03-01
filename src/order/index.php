@@ -48,7 +48,14 @@ if (!empty($_POST)) {
 
     $response = json_decode($response, true);
 
-    $pdo->query("INSERT INTO `orders` (`unique_id`, `email`, `product_id`, `quantity`, `total_price`) VALUES ('{$response['data']['uniqid']}','$email','{$product['id']}','$quantity','{$response['log']['taxes']['total']}')");
+    $query = $pdo->prepare("INSERT INTO `orders` (`unique_id`, `email`, `product_id`, `quantity`, `total_price`) VALUES (:unique_id,:email,:product_id,:quantity,:total_price)");
+    $query->execute([
+        "unique_id" => $response['data']['uniqid'],
+        "email" => $email,
+        "product_id" => $product['id'],
+        "quantity" => $quantity,
+        "total_price" => $response['log']['taxes']['total'],
+    ]);
 
     $_SESSION['unique_id'] = $response['data']['uniqid'];
 
